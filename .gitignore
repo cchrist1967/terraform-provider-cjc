@@ -1,0 +1,25 @@
+**/**.terraform/
+**/.DS_Store
+*.swp
+*.zip
+.bifrost.cfg
+venv
+__pycache__
+*/*.tfstate*
+.terraform*
+*.tfstate
+*.tfstate.*
+**/plan
+# this is an artifact of building lambda layer locally for plan
+tmp/
+modules/python-lambda/zip
+migration/*.out
+python/scripts/queued_task_execution/app.cfg
+python/logs/
+
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+console,checkov_test.xml
+checkov_test.xml
