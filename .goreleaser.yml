@@ -27,7 +27,10 @@ builds:
       - arm
       - arm64
     ignore:
-      - goos: darwin
+      - goos:
+        - freebsd
+        - linux
+        - darwin
         goarch: "386"
     binary: "{{ .ProjectName }}_v{{ .Version }}"
 archives:
