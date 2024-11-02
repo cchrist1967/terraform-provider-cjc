@@ -27,9 +27,8 @@ builds:
     - arm
     - arm64
   ignore:
-    - goos: freebsd
-    - goos: linux
     - goos: darwin
+      goarch: '386'
   binary: '{{ .ProjectName }}_v{{ .Version }}'
 archives:
 - format: zip
@@ -38,15 +37,13 @@ checksum:
   extra_files:
     - glob: 'terraform-registry-manifest.json'
       name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
-    - glob: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
-          name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
+  name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
   algorithm: sha256
 signs:
   - artifacts: checksum
     args:
       # if you are using this in a GitHub action or some other automated pipeline, you 
-      # need to pass the batch cd ..
-      flag to indicate its not interactive.
+      # need to pass the batch flag to indicate its not interactive.
       - "--batch"
       - "--local-user"
       - "{{ .Env.GPG_FINGERPRINT }}" # set this environment variable for your signing key
