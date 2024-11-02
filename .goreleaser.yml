@@ -44,6 +44,9 @@ checksum:
   algorithm: sha256
 signs:
   - artifacts: checksum
+    before:
+      hooks:
+        - sh -c 'mv dist/{{ .ProjectName }}_{{ .Version }}_checksums.txt dist/{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
     args:
       # if you are using this in a GitHub action or some other automated pipeline, you 
       # need to pass the batch flag to indicate its not interactive.
@@ -62,3 +65,4 @@ release:
   draft: true
 changelog:
   disable: true
+
