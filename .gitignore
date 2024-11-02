@@ -10,6 +10,7 @@ __pycache__
 *.tfstate
 *.tfstate.*
 **/plan
+dist
 # this is an artifact of building lambda layer locally for plan
 tmp/
 modules/python-lambda/zip
