@@ -1,8 +1,9 @@
 terraform {
  required_providers {
    cjc = {
-     source = "hashicorp.com/edu/cjc"
-     version = "1.0.1"
+     #source = "hashicorp.com/edu/cjc"
+     source = "cchrist1967/cjc"
+     version = "0.0.2"
    }
  }
 }
@@ -14,7 +15,7 @@ data "cjc_buckets" "example" {}
 
 resource "cjc_s3_bucket" "example" {
  buckets = [{
-   name = "eggco-bucket-1234567"
+   name = "eggco-bucket-987654321"
    tags = "mybucket"
  }]
 }
