@@ -42,11 +42,11 @@ checksum:
       name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
   name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
   algorithm: sha256
+  after:
+    hooks:
+      - sh -c 'mv dist/{{ .ProjectName }}_{{ .Version }}_checksums.txt dist/{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
 signs:
   - artifacts: checksum
-    before:
-      hooks:
-        - sh -c 'mv dist/{{ .ProjectName }}_{{ .Version }}_checksums.txt dist/{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
     args:
       # if you are using this in a GitHub action or some other automated pipeline, you 
       # need to pass the batch flag to indicate its not interactive.
